@@ -6,3 +6,18 @@
 //
 
 import Foundation
+import UIKit
+
+class MovieDetailsViewModel {
+    
+    let movieServices: MovieServices = MovieServices()
+    
+    func fetchMovieDetails(id: String, completionHandler: @escaping (MovieDetails) -> Void) {
+        movieServices.getMovieDetails(id: id) { movieDetails in
+            completionHandler(MovieDetails(dto: movieDetails))
+        } errorHandler: { errorMessage in
+            print(errorMessage)
+        }
+    }
+    
+}

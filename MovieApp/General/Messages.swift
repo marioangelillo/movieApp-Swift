@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+struct Messages {
+    
+    struct Error {
+        static var parse: String { "No se pudo leer la respuesta del servicio" }
+        static var moviesNotFound: String { "No se encontraron resultados" }
+    }
+}

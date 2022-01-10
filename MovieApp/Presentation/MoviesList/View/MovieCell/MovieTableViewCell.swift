@@ -9,15 +9,29 @@ import UIKit
 
 class MovieTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var labelTitleCell: UILabel!
+    @IBOutlet weak var labelDescriptionCell: UILabel!
+    @IBOutlet weak var imageCell: UIImageView!
+    
+    static private var cellIdentifier: String { "MovieTableViewCell" }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
+    func configureCell(_ tableView: UITableView, indexPath: IndexPath, for objMovie: Movie) -> MovieTableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: MovieTableViewCell.cellIdentifier, for: indexPath) as? MovieTableViewCell 
+        
+        cell?.labelTitleCell.text = objMovie.title
+        cell?.labelDescriptionCell.text = objMovie.overview
+        if let imageUrl = URL(string: "https://image.tmdb.org/t/p/w500\(objMovie.posterPath)") {
+            cell?.imageCell.load(url: imageUrl)
+//            cell?.imageCell.downloaded(from: imageUrl)
+        }
+        
+        return cell ?? MovieTableViewCell()
+    }
 }
+

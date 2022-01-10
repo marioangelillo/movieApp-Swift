@@ -7,14 +7,18 @@
 
 import Foundation
 
-struct MoviesDTO: Decodable {
+struct PageMovieDTO: Decodable {
     let results : [MovieDTO]
 }
 
-extension PageMovieDTO: {
+extension PageMovieDTO {
     
     struct MovieDTO: Decodable {
         
-        let title: String
+        let id: Int?
+        let title: String?
+        let overview: String?
+        let backdrop_path: String?
+        let poster_path: String?
     }
 }
