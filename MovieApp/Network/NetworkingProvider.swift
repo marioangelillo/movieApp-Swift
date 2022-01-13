@@ -9,20 +9,22 @@ import Foundation
 
 final class MovieServices {
     
-    func getPopularMovies(completionHandler: @escaping (PageMovieDTO?) -> Void) {
+    func getPopularMovies(completionHandler: @escaping ResultMoviesHandler, errorHandler: @escaping ErrorHandler) {
         
         URLSession.shared.dataTask(with: URLApplication.Movie.getPopularMoviesURL()) { data, response, error in
             
-//            print("Data: \(String(describing: data))")
-//            print("Response: \(String(describing: response))")
-//            print("Error: \(String(describing: error))")
-            
-            if let data = data {
-                do {
-                    let movies = try? JSONDecoder().decode(PageMovieDTO.self, from: data)
-                    completionHandler(movies)
-                }
+            if let error = error {
+                errorHandler(error.localizedDescription)
+                return
             }
+            
+            guard let movies = data?.toDTO(PageMovieDTO.self) else {
+                errorHandler(Messages.Error.parse)
+                return
+            }
+            
+            completionHandler(movies)
+            
         }.resume()
     }
     

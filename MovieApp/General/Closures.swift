@@ -7,6 +7,12 @@
 
 import Foundation
 
-typealias ResultMoviesHandler = (_ pageMovie: PageMovieDTO?) -> Void
-typealias ResultDetailsMovieHandler = (_ movieDetails: MovieDetailsDTO) -> Void
+typealias ResultMoviesHandler = (_ pageMovie: PageMovieDTO) -> Void
+typealias MoviesHandler = (_ movies: [Movie]) -> Void
+
+typealias ResultDetailsMovieHandler = (_ movieDetailsDTO: MovieDetailsDTO) -> Void
+typealias DetailMovieHandler = (_ MovieDetails: MovieDetails) -> Void
+
 typealias ErrorHandler = (_ errorMessage: String) -> Void
+
+

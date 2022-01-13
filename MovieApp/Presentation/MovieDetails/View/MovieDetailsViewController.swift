@@ -18,8 +18,8 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var moviePopularityLabel: UILabel!
     @IBOutlet weak var movieBudgetLabel: UILabel!
     
-    var id = 0
-    let movieDetailsViewModel: MovieDetailsViewModel = MovieDetailsViewModel()
+    var id: String!
+    let viewModel: MovieDetailsViewModel = MovieDetailsViewModel()
     var movieWithDetails: MovieDetails!
     
     @IBAction func backButton(_ sender: Any) {
@@ -28,29 +28,29 @@ class MovieDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.loadViewController()
+        self.viewModel.getMovieDetails(id: id)
+        self.bind()
     }
     
-}
-
-extension MovieDetailsViewController {
-    func loadViewController() {
-        self.movieDetailsViewModel.fetchMovieDetails(id: String(self.id)) { movieDetails in
-            self.movieWithDetails = movieDetails
-        
+    func bind() {
+        self.viewModel.bindMovieDetailsResult = { [weak self] movieDetails in
+            print("Data: \(movieDetails)")
             DispatchQueue.main.async {
-                if let imageUrl = URL(string: "https://image.tmdb.org/t/p/w500\(self.movieWithDetails.posterPath)") {
-                    self.movieImage.load(url: imageUrl)
-                }
+                let imageUrl = "https://image.tmdb.org/t/p/w500\(movieDetails.posterPath)"
                 
-                self.movieTitleLabel.text = self.movieWithDetails.title
-                self.movieOverviewLabel.text = self.movieWithDetails.overview
-                self.movieGenresLabel.text = self.movieWithDetails.genres.map { genre in genre.name }.joined(separator: ", ")
-                self.movieAdultLabel.text = self.movieWithDetails.adult ? "Only +18" : "Suitable for all ages"
-                self.movieReleaseDateLabel.text = "Release date: \(self.movieWithDetails.releaseDate)"
-                self.moviePopularityLabel.text = "Popularity: \(String(self.movieWithDetails.popularity))"
-                self.movieBudgetLabel.text = "Budget: $\(String(self.movieWithDetails.budget))"
+                self?.movieImage.downloadImage(imageUrl, completion: { image in self?.movieImage.image = image })
+                self?.movieTitleLabel.text = movieDetails.title
+                self?.movieOverviewLabel.text = movieDetails.overview
+                self?.movieGenresLabel.text = movieDetails.genres.map { genre in genre.name }.joined(separator: ", ")
+                self?.movieAdultLabel.text = movieDetails.adult ? "Only +18" : "Suitable for all ages"
+                self?.movieReleaseDateLabel.text = "Release date: \(movieDetails.releaseDate)"
+                self?.moviePopularityLabel.text = "Popularity: \(String(movieDetails.popularity))"
+                self?.movieBudgetLabel.text = "Budget: $\(String(movieDetails.budget))"
             }
+            
         }
     }
+
 }
+
+

@@ -10,14 +10,22 @@ import UIKit
 
 class MovieDetailsViewModel {
     
-    let movieServices: MovieServices = MovieServices()
+    private let model: MovieDetailModel = MovieDetailModel()
+    var bindMovieDetailsResult = { (_ movieDetails: MovieDetails) -> () in }
     
-    func fetchMovieDetails(id: String, completionHandler: @escaping (MovieDetails) -> Void) {
-        movieServices.getMovieDetails(id: id) { movieDetails in
-            completionHandler(MovieDetails(dto: movieDetails))
-        } errorHandler: { errorMessage in
-            print(errorMessage)
+    var result: MovieDetails! {
+        didSet {
+            self.bindMovieDetailsResult(self.result)
         }
+    }
+    
+    func getMovieDetails(id: String) {
+        model.getMovieData(id: id) { movieDetails in
+            self.result = movieDetails
+        } errorHandler: { errorMessage in
+            print("Error: \(errorMessage)")
+        }
+
     }
     
 }

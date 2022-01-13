@@ -17,24 +17,33 @@ class MoviesListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.activityIndicator.isHidden = true
+        self.configureTable()
+        self.configureView()
+        self.bind()
+    }
 
+    private func configureTable() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "MovieTableViewCell", bundle: nil), forCellReuseIdentifier: "MovieTableViewCell")
         tableView.estimatedRowHeight = 200
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorColor = UIColor.blue
-
-        movieListViewModel.fetchPopularMovies()
-        
-        print("resultado77 \(self.movieListViewModel.popularMovies)")
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-        DispatchQueue.main.async() {
-            self.tableView.reloadData()
+    
+    private func configureView() {
+        self.activityIndicator.isHidden = false
+        self.activityIndicator.startAnimating()
+        movieListViewModel.getPopularMovies()
+    }
+    
+    private func bind() {
+        movieListViewModel.refreshData = { [weak self] () in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+                self?.activityIndicator.isHidden = true
+                self?.activityIndicator.stopAnimating()
+            }
         }
     }
 
@@ -43,7 +52,6 @@ class MoviesListViewController: UIViewController {
 
 extension MoviesListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("resultado78 \(movieListViewModel.popularMovies.count)")
         return movieListViewModel.popularMovies.count
     }
     
@@ -52,19 +60,21 @@ extension MoviesListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-//        let id = movieListViewModel.popularMovies[indexPath.row].id
-//        movieDetailsViewModel.userSelectedItem(id: id, vc: self)
         let movieDetailsVC = MovieDetailsViewController(nibName: "MovieDetailsViewController", bundle: nil)
-        movieDetailsVC.id = movieListViewModel.popularMovies[indexPath.row].id
+        movieDetailsVC.id = String(movieListViewModel.popularMovies[indexPath.row].id)
         movieDetailsVC.modalPresentationStyle = .fullScreen
         self.present(movieDetailsVC, animated: true, completion: nil)
-        
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        movieListViewModel.animatedCell(cell: cell)
+        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, -500, 500, -500)
+        cell.layer.transform = rotationTransform
+        cell.alpha = 0.75
+        
+        UIView.animate(withDuration: 0.75) {
+            cell.layer.transform = CATransform3DIdentity
+            cell.alpha = 1.0
+        }
     }
-    
     
 }
