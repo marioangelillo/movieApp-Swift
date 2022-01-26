@@ -14,16 +14,24 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var anchorBottomView: NSLayoutConstraint!
     
+    let loginViewModel: LoginViewModel = LoginViewModel()
+    
     @IBAction func loginButton(_ sender: Any) {
-        let movieListVC = MoviesListViewController(nibName: "MoviesListViewController", bundle: nil)
-        movieListVC.modalPresentationStyle = .fullScreen
-        self.present(movieListVC, animated: true, completion: nil)
-
+        if loginViewModel.isValidEmailAddress(emailAddressString: emailTextField.text ?? "") {
+            loginViewModel.saveUserEmail(userEmail: emailTextField.text)
+            let movieListVC = TabBarViewController(nibName: "TabBarViewController", bundle: nil)
+            movieListVC.modalPresentationStyle = .fullScreen
+            self.present(movieListVC, animated: true, completion: nil)
+        } else {
+            incorrectEmailLabel.isHidden = false
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        incorrectEmailLabel.isHidden = true
+        
+        self.incorrectEmailLabel.isHidden = true
+        self.emailTextField.text = UserDefaults.standard.string(forKey: "userEmail")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,8 +57,6 @@ extension LoginViewController {
     }
     
     @objc private func keyboardWillShow(_ notification: Notification) {
-        // Este fn recibe una notificacion para saber cuando mostrarse
-//        print(notification.userInfo)
         
         let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect ?? .zero // me trae informacion de un diccionario correspondiente a la key llamada "keyboardFrameEndUserInfoKey"
         let animationDuration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double ?? 0.0

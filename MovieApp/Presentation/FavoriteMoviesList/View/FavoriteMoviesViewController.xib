@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieListViewController" customModule="MovieApp" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FavoriteMoviesViewController" customModule="MovieApp" customModuleProvider="target">
             <connections>
-                <outlet property="activityIndicator" destination="SHO-fh-QY3" id="JYe-O2-lmp"/>
-                <outlet property="tableView" destination="3DE-OA-kLu" id="iPV-tX-Rev"/>
+                <outlet property="activityIndicator" destination="6js-bP-mVF" id="cdi-RT-4s8"/>
+                <outlet property="tableView" destination="LfL-RL-EPw" id="IbT-jq-PHm"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,25 +20,25 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3DE-OA-kLu">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LfL-RL-EPw">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="SHO-fh-QY3">
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="6js-bP-mVF">
                     <rect key="frame" x="197" y="438" width="20" height="20"/>
                 </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="SHO-fh-QY3" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="3za-h0-XTH"/>
-                <constraint firstItem="SHO-fh-QY3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="5lL-ON-BLK"/>
-                <constraint firstItem="3DE-OA-kLu" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="OTf-qQ-3z8"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="3DE-OA-kLu" secondAttribute="trailing" id="VCR-no-lfe"/>
-                <constraint firstItem="3DE-OA-kLu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Vzh-99-pSq"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="3DE-OA-kLu" secondAttribute="bottom" id="xxM-TQ-xF9"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="LfL-RL-EPw" secondAttribute="trailing" id="46J-rI-vLF"/>
+                <constraint firstItem="LfL-RL-EPw" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="I1K-Cu-CH5"/>
+                <constraint firstItem="LfL-RL-EPw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="VIr-Bq-t0X"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="LfL-RL-EPw" secondAttribute="bottom" id="a67-jY-lZB"/>
+                <constraint firstItem="6js-bP-mVF" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="jtr-Bz-F7q"/>
+                <constraint firstItem="6js-bP-mVF" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="uOo-6p-pfm"/>
             </constraints>
-            <point key="canvasLocation" x="131.8840579710145" y="91.741071428571431"/>
+            <point key="canvasLocation" x="139" y="66"/>
         </view>
     </objects>
     <resources>

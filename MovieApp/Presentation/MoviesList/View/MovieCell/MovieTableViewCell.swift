@@ -28,7 +28,6 @@ class MovieTableViewCell: UITableViewCell {
         cell?.labelDescriptionCell.text = objMovie.overview
         if let imageUrl = URL(string: "https://image.tmdb.org/t/p/w500\(objMovie.posterPath)") {
             cell?.imageCell.load(url: imageUrl)
-//            cell?.imageCell.downloaded(from: imageUrl)
         }
         
         return cell ?? MovieTableViewCell()

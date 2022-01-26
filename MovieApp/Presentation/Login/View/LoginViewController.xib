@@ -27,8 +27,8 @@
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="6ed-vt-9z0">
                             <rect key="frame" x="107" y="216" width="200" height="386"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cine" translatesAutoresizingMaskIntoConstraints="NO" id="940-zP-f2o">
-                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="940-zP-f2o">
+                                    <rect key="frame" x="0.0" y="1.5" width="200" height="197.5"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="200" id="0R8-9x-Bn0"/>
                                         <constraint firstAttribute="width" constant="200" id="NEL-yI-jI7"/>
@@ -40,7 +40,7 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A0i-Q8-xvg">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A0i-Q8-xvg">
                                     <rect key="frame" x="0.0" y="260.5" width="200" height="34"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -85,7 +85,7 @@
         </view>
     </objects>
     <resources>
-        <image name="cine" width="1400" height="1151.5"/>
+        <image name="person" catalog="system" width="128" height="117"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

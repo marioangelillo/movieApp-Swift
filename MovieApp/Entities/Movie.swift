@@ -11,7 +11,7 @@ struct Movies {
     let movies: [Movie]
 }
 
-struct Movie {
+struct Movie: Codable {
     
     let id: Int
     let title: String

@@ -30,9 +30,7 @@ extension UIImageView {
     
     
     func downloadImage(_ urlString: String, completion: @escaping (_ image: UIImage?) -> Void) {
-        
         DispatchQueue.global(qos: .background).async {
-            
             guard let url = URL(string: urlString) else {
                 print("Error en la url")
                 DispatchQueue.main.async {
@@ -55,4 +53,11 @@ extension UIImageView {
         }
     }
     
+    func makeRounded() {
+        self.layer.borderWidth = 1
+        self.layer.masksToBounds = false
+        self.layer.borderColor = UIColor.black.cgColor
+        self.layer.cornerRadius = self.frame.height / 2
+        self.clipsToBounds = true
+    }
 }

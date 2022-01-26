@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title String" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="djV-nl-3PP">
-                        <rect key="frame" x="10" y="5" width="377" height="21"/>
+                        <rect key="frame" x="15" y="5" width="372" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="hSc-E1-gqJ"/>
                         </constraints>
@@ -52,7 +52,7 @@
                     <constraint firstItem="djV-nl-3PP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Ax4-ea-DRY"/>
                     <constraint firstItem="RnW-P6-rjq" firstAttribute="leading" secondItem="UD6-pz-amf" secondAttribute="trailing" constant="10" id="C3o-R6-7aS"/>
                     <constraint firstItem="UD6-pz-amf" firstAttribute="top" secondItem="djV-nl-3PP" secondAttribute="bottom" constant="10" id="E3k-MB-zLf"/>
-                    <constraint firstItem="djV-nl-3PP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="HpM-Jx-DP3"/>
+                    <constraint firstItem="djV-nl-3PP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="HpM-Jx-DP3"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

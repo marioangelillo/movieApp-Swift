@@ -34,7 +34,6 @@ class MovieDetailsViewController: UIViewController {
     
     func bind() {
         self.viewModel.bindMovieDetailsResult = { [weak self] movieDetails in
-            print("Data: \(movieDetails)")
             DispatchQueue.main.async {
                 let imageUrl = "https://image.tmdb.org/t/p/w500\(movieDetails.posterPath)"
                 

@@ -27,5 +27,13 @@ class MovieListViewModel {
         }
     }
     
+    func addToFavorites(movie: Movie) {
+        Helper().getFavoriteMovies { movies in
+            var favoriteMovies: [Movie] = movies
+            favoriteMovies.append(movie)
+            Helper().saveFavoriteMovies(movies: favoriteMovies)
+        }
+    }
+    
 }
 
